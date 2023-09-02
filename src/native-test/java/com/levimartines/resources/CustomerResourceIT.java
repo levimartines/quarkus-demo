@@ -1,8 +1,8 @@
-package com.levimartines;
+package com.levimartines.resources;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
 @QuarkusIntegrationTest
-public class PersonResourceIT extends PersonResourceTest {
+public class CustomerResourceIT extends CustomerResourceTest {
 	// Execute the same tests but in packaged mode.
 }
