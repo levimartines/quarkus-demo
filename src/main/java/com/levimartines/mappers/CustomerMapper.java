@@ -9,6 +9,7 @@ public class CustomerMapper {
 
 	public CustomerDTO toDTO(Customer customer) {
 		CustomerDTO dto = new CustomerDTO();
+		dto.setId(customer.id);
 		dto.setPhone(customer.getPhone());
 		dto.setEmail(customer.getEmail());
 		dto.setName(customer.getName());
@@ -16,5 +17,4 @@ public class CustomerMapper {
 		return dto;
 	}
 
-	;
 }

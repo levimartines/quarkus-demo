@@ -29,7 +29,8 @@ public class Car extends PanacheEntity {
 	private Customer customer;
 
 	public static Car findByPlate(String plate) {
-		return find("select c from Car c inner join fetch c.customer where lower(c.plate) = ?1", plate.toLowerCase()).firstResult();
+		String query = "SELECT c FROM Car c INNER JOIN FETCH c.customer WHERE UPPER(c.plate) = ?1";
+		return find(query, plate.toUpperCase()).firstResult();
 	}
 
 }

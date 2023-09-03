@@ -6,15 +6,20 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "service")
+@Where(clause = "deleted=false")
+@SQLDelete(sql = "UPDATE service SET deleted=true WHERE id=?")
 public class Service extends PanacheEntity {
 
-	String name;
+	private String name;
 	private Double value;
+	private boolean deleted;
 
 }

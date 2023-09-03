@@ -1,7 +1,9 @@
 package com.levimartines.resources;
 
 import com.levimartines.models.Customer;
+import com.levimartines.models.Service;
 import com.levimartines.stubs.CustomerStub;
+import com.levimartines.stubs.ServiceStubs;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import jakarta.inject.Inject;
@@ -37,6 +39,15 @@ public abstract class BaseResourceTest {
 			.and().body(customer).when().post("/customers")
 			.then().statusCode(201)
 			.and().extract().as(Customer.class);
+	}
+
+	protected Service createTestService() {
+		Service service = ServiceStubs.testService();
+		return given()
+			.header("Content-type", "application/json")
+			.and().body(service).when().post("/services")
+			.then().statusCode(201)
+			.and().extract().as(Service.class);
 	}
 
 }

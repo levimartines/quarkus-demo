@@ -12,13 +12,13 @@ public class CarMapper {
 	CustomerMapper customerMapper;
 
 	public CarDTO toDTO(Car car) {
+		if (car == null) return null;
 		CarDTO dto = new CarDTO();
+		dto.setId(car.id);
 		dto.setComments(car.getComments());
 		dto.setPlate(car.getPlate());
 		dto.setName(car.getName());
-		dto.setCustomerDTO(customerMapper.toDTO(car.getCustomer()));
+		dto.setCustomer(customerMapper.toDTO(car.getCustomer()));
 		return dto;
 	}
-
-	;
 }

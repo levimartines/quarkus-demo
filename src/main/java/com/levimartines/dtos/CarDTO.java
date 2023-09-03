@@ -8,8 +8,9 @@ import lombok.*;
 @Setter
 @Builder
 public class CarDTO {
+	private Long id;
 	private String name;
 	private String comments;
 	private String plate;
-	private CustomerDTO customerDTO;
+	private CustomerDTO customer;
 }

@@ -19,6 +19,7 @@ public class CarResourceTest extends BaseResourceTest {
 			.then().statusCode(200)
 			.and().extract().as(CarDTO.class);
 		Assertions.assertNotNull(car);
+		Assertions.assertEquals(customer.getName(), car.getCustomer().getName());
 	}
 
 }
