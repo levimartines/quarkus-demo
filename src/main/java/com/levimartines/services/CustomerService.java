@@ -5,6 +5,8 @@ import com.levimartines.models.Customer;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
+import java.util.List;
+
 @ApplicationScoped
 public class CustomerService {
 
@@ -20,5 +22,9 @@ public class CustomerService {
 		Customer customer = Customer.findById(id);
 		customer.addCar(car);
 		customer.persist();
+	}
+
+	public List<Customer> findAll() {
+		return Customer.findAll().list();
 	}
 }

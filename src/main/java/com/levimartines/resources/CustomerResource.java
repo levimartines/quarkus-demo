@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.RestPath;
 
 import java.net.URI;
+import java.util.List;
 
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
@@ -18,6 +19,11 @@ public class CustomerResource {
 
 	@Inject
 	CustomerService service;
+
+	@GET
+	public List<Customer> findAll() {
+		return service.findAll();
+	}
 
 	@POST
 	public Response save(Customer customer) {

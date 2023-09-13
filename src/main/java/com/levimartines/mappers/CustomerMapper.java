@@ -17,4 +17,13 @@ public class CustomerMapper {
 		return dto;
 	}
 
+	public Customer toEntity(CustomerDTO dto) {
+		Customer customer = new Customer();
+		customer.id = dto.getId();
+		customer.setPhone(dto.getPhone());
+		customer.setEmail(dto.getEmail());
+		customer.setName(dto.getName());
+		customer.setAddress(dto.getAddress());
+		return customer;
+	}
 }

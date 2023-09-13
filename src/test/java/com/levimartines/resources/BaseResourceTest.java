@@ -1,9 +1,7 @@
 package com.levimartines.resources;
 
 import com.levimartines.models.Customer;
-import com.levimartines.models.Service;
 import com.levimartines.stubs.CustomerStub;
-import com.levimartines.stubs.ServiceStubs;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import jakarta.inject.Inject;
@@ -27,9 +25,10 @@ public abstract class BaseResourceTest {
 	@AfterEach
 	@Transactional
 	public void afterEach() {
-		entityManager.createNativeQuery("DELETE FROM service WHERE true").executeUpdate();
-		entityManager.createNativeQuery("DELETE FROM car WHERE true").executeUpdate();
-		entityManager.createNativeQuery("DELETE FROM customer WHERE true").executeUpdate();
+		entityManager.createNativeQuery("DELETE FROM service_items WHERE true").executeUpdate();
+		entityManager.createNativeQuery("DELETE FROM services WHERE true").executeUpdate();
+		entityManager.createNativeQuery("DELETE FROM cars WHERE true").executeUpdate();
+		entityManager.createNativeQuery("DELETE FROM customers WHERE true").executeUpdate();
 	}
 
 	protected Customer createTestCustomer() {
@@ -39,15 +38,6 @@ public abstract class BaseResourceTest {
 			.and().body(customer).when().post("/customers")
 			.then().statusCode(201)
 			.and().extract().as(Customer.class);
-	}
-
-	protected Service createTestService() {
-		Service service = ServiceStubs.testService();
-		return given()
-			.header("Content-type", "application/json")
-			.and().body(service).when().post("/services")
-			.then().statusCode(201)
-			.and().extract().as(Service.class);
 	}
 
 }

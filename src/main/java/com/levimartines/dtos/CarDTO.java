@@ -2,6 +2,9 @@ package com.levimartines.dtos;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -9,8 +12,10 @@ import lombok.*;
 @Builder
 public class CarDTO {
 	private Long id;
-	private String name;
+	private String model;
+	private String color;
 	private String comments;
 	private String plate;
 	private CustomerDTO customer;
+	private List<ServiceDTO> services = new ArrayList<>();
 }

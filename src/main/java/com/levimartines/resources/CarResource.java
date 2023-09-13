@@ -3,10 +3,7 @@ package com.levimartines.resources;
 import com.levimartines.dtos.CarDTO;
 import com.levimartines.services.CarService;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.jboss.resteasy.reactive.RestQuery;
 
@@ -19,7 +16,13 @@ public class CarResource {
 	CarService service;
 
 	@GET
-	public CarDTO findByPlate(@RestQuery String plate) {
-		return service.findByPlate(plate);
+	public CarDTO find(@RestQuery Long id, @RestQuery String plate) {
+		return service.find(id, plate);
 	}
+
+	@POST
+	public CarDTO save(CarDTO car) {
+		return service.save(car);
+	}
+
 }
