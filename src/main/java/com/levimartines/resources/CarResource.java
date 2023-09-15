@@ -2,6 +2,7 @@ package com.levimartines.resources;
 
 import com.levimartines.dtos.CarDTO;
 import com.levimartines.services.CarService;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -10,6 +11,7 @@ import org.jboss.resteasy.reactive.RestQuery;
 @Path("/cars")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class CarResource {
 
 	@Inject

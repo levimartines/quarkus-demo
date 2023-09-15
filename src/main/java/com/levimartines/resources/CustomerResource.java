@@ -1,13 +1,14 @@
 package com.levimartines.resources;
 
-import com.levimartines.models.Car;
+import com.levimartines.dtos.CustomerDTO;
 import com.levimartines.models.Customer;
 import com.levimartines.services.CustomerService;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.jboss.resteasy.reactive.RestPath;
+import org.jboss.logging.Logger;
 
 import java.net.URI;
 import java.util.List;
@@ -15,13 +16,16 @@ import java.util.List;
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class CustomerResource {
+
+	private static final Logger LOG = Logger.getLogger(CustomerResource.class);
 
 	@Inject
 	CustomerService service;
 
 	@GET
-	public List<Customer> findAll() {
+	public List<CustomerDTO> findAll() {
 		return service.findAll();
 	}
 
@@ -31,9 +35,4 @@ public class CustomerResource {
 		return Response.created(URI.create("/customers/" + customer.id)).entity(customer).build();
 	}
 
-	@PUT
-	@Path("/{id}/cars")
-	public void addCar(@RestPath String id, Car car) {
-		service.addCar(id, car);
-	}
 }
