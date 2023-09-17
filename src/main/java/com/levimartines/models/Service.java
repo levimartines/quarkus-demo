@@ -30,7 +30,7 @@ public class Service extends PanacheEntity {
 	@OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
 	private List<ServiceItem> serviceItems = new ArrayList<>();
 	private LocalDate date = LocalDate.now();
-
+	private boolean done;
 	private boolean deleted;
 
 }
