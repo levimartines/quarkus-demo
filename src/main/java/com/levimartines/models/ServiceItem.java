@@ -24,6 +24,6 @@ public class ServiceItem extends PanacheEntity {
 	private Double value;
 	private boolean deleted;
 	@ManyToOne
-	@JoinColumn(name = "service_id")
+	@JoinColumn(name = "service_id", nullable = false, insertable = false, updatable = false)
 	private Service service;
 }

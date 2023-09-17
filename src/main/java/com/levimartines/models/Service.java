@@ -2,7 +2,6 @@ package com.levimartines.models;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +22,7 @@ import java.util.List;
 public class Service extends PanacheEntity {
 
 	@ManyToOne
-	@JoinColumn(name = "car_id")
-	@NotNull
+	@JoinColumn(name = "car_id", nullable = false, insertable = false, updatable = false)
 	private Car car;
 
 	@OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
